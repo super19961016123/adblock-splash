@@ -1,0 +1,46 @@
+# =========================================================
+# 开屏广告 rewrite 配合规则（QuantumultX [rewrite_local]）
+# 说明：域名规则拦不到「广告与内容同域名下发」的开屏广告，
+#       本文件用 URL 正则对广告接口直接 reject，作为补充。
+# 来源：社区公开规则（fmz200/wool_scripts、chxm1023/Advertising 等），
+#       已标注出处；接口路径会变，请配合定期更新 + 订阅维护中的社区资源。
+# =========================================================
+
+[rewrite_local]
+
+# ---------- 穿山甲（Pangle）广告接口 ----------
+# 来源：chxm1023/Advertising
+^https?:\/\/api-access\.pangolin-sdk-toutiao[-\w]*\.com\/.* url reject
+
+# ---------- 优量汇 / 广点通 广告接口 ----------
+# 来源：chxm1023/Advertising
+^https?:\/\/(.*\.gdt\.qq\.com\/(gdt_mview.*|server_bidding)|adsmind\.gdtimg\.com\/ads_svp_video.*|pgdt\.gtimg\.cn) url reject-200
+
+# ---------- 阿里系 App 开屏 ----------
+# 来源：chxm1023/Advertising（acs.m.taobao.com 为淘宝/天猫等开屏广告主接口）
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.taobao\.wmlayer\.adi\.load url reject-200
+
+# ---------- 京东系 App 开屏 ----------
+# 来源：fmz200/wool_scripts
+# 京东读书 开屏/弹窗
+^https?:\/\/jdread-api\.jd\.com\/jdread\/api\/channel\/module\/opens url reject-200
+^https?:\/\/jdread-api\.jd\.com\/jdread\/api\/popup url reject-200
+# 京东云无线宝 开屏
+^https?:\/\/router-app-api\.jdcloud\.com\/v\d\/board\/routerAppSplash url reject-200
+
+# ---------- 通用聚合（穿山甲 GroMore 等聚合中间层） ----------
+# 来源：chxm1023/Advertising
+^https?:\/\/[-\w]*\.gromore\.com\/.* url reject-200
+
+# 下面字段：列出上述 rewrite 覆盖的主机（供 QuantumultX 快速匹配，非必须）
+hostname = api-access.pangolin-sdk-toutiao*.com, *.gdt.qq.com, adsmind.gdtimg.com, pgdt.gtimg.cn, acs.m.taobao.com, jdread-api.jd.com, router-app-api.jdcloud.com, *.gromore.com
+
+# =========================================================
+# 强烈建议：再订阅下列「持续维护」的社区全量 rewrite 资源，
+# 覆盖面远大于本文件示例，且接口更新及时：
+#   · fmz200/wool_scripts  QuantumultX/rewrite/rewrite.snippet
+#     https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/rewrite/rewrite.snippet
+#   · chxm1023/Advertising（Loon/Surge，可转 QuantumultX 使用）
+#     https://raw.githubusercontent.com/chxm1023/Advertising/main/Advertising.plugin
+# 将以上链接按本说明「资源」方式添加到 QuantumultX 即可自动更新。
+# =========================================================
