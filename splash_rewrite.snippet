@@ -16,6 +16,12 @@
 # 来源：chxm1023/Advertising
 ^https?:\/\/(.*\.gdt\.qq\.com\/(gdt_mview.*|server_bidding)|adsmind\.gdtimg\.com\/ads_svp_video.*|pgdt\.gtimg\.cn) url reject-200
 
+# ---------- 酷安 App 开屏广告（广点通 SDK，返回空广告让其跳过） ----------
+# 酷安开屏广告组件：com.qq.e.ads.ADActivity，走 sdk.e.qq.com / gdt 接口
+# 用 reject-200 返回空响应，SDK 判定无广告后立即跳过，避免空白等待
+^https?:\/\/sdk\.e\.qq\.com\/.* url reject-200
+^https?:\/\/.*\.gdt\.qq\.com\/.* url reject-200
+
 # ---------- 阿里系 App 开屏 ----------
 # 来源：chxm1023/Advertising（acs.m.taobao.com 为淘宝/天猫等开屏广告主接口）
 ^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.taobao\.wmlayer\.adi\.load url reject-200
@@ -33,7 +39,7 @@
 ^https?:\/\/[-\w]*\.gromore\.com\/.* url reject-200
 
 # 下面字段：列出上述 rewrite 覆盖的主机（供 QuantumultX 快速匹配，非必须）
-hostname = api-access.pangolin-sdk-toutiao*.com, *.gdt.qq.com, adsmind.gdtimg.com, pgdt.gtimg.cn, acs.m.taobao.com, jdread-api.jd.com, router-app-api.jdcloud.com, *.gromore.com
+hostname = api-access.pangolin-sdk-toutiao*.com, *.gdt.qq.com, sdk.e.qq.com, adsmind.gdtimg.com, pgdt.gtimg.cn, acs.m.taobao.com, jdread-api.jd.com, router-app-api.jdcloud.com, *.gromore.com
 
 # =========================================================
 # 强烈建议：再订阅下列「持续维护」的社区全量 rewrite 资源，
