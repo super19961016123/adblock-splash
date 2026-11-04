@@ -38,8 +38,38 @@
 # 来源：chxm1023/Advertising
 ^https?:\/\/[-\w]*\.gromore\.com\/.* url reject-200
 
+# ---------- 阿里系更多开屏接口（补充） ----------
+# 来源：chxm1023/Advertising
+^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.(cainiao\.adx\.flyad\.getad|taobao\.(volvo\.secondfloor\.getconfig|wireless\.home\.newface\.awesome\.get)) url reject-dict
+
+# ---------- 京东金融 开屏 ----------
+# 来源：chxm1023/Advertising
+^https?:\/\/ms\.jr\.jd\.com\/gw\/generic\/aladdin\/newna\/m\/getLoadingPicture url reject-200
+
+# ---------- 豆瓣 开屏广告 ----------
+# 来源：chxm1023/Advertising
+^https?:\/\/api\.douban\.com\/.+\/.*ads url reject-200
+
+# ---------- 百度系 开屏广告接口 ----------
+# 来源：chxm1023/Advertising
+^https?:\/\/mime\.baidu\.com\/v\d\/(activity\/advertisement|start_screen_ads\/list) url reject-dict
+^https?:\/\/bgg\.baidu\.com\/bgg\/produce url reject-dict
+
+# ---------- 酷狗概念版 开屏广告 ----------
+# 来源：chxm1023/Advertising
+^https?:\/\/gateway\.kugou\.com\/(youth\/v\d\/(ad\/play_status.+|start_img\/get_set|ab\/tmeab.+)|ads.+) url reject-dict
+
+# ---------- 网速管家 开屏 ----------
+# 来源：chxm1023/Advertising
+^https?:\/\/.*\.speedtest\.cn\/(images|api\/.+\/showpic\/position) url reject-200
+
+# ---------- 掌上公交 广告 ----------
+# 来源：chxm1023/Advertising
+^https?:\/\/remind\.mygolbs\.com\/remind-off\/query\/.+ url reject
+^https?:\/\/.*\.enmonster\.com\/apa\/(advert\/demand\/home\/poster|index\/advert\/skin) url reject-dict
+
 # 下面字段：列出上述 rewrite 覆盖的主机（供 QuantumultX 快速匹配，非必须）
-hostname = api-access.pangolin-sdk-toutiao*.com, *.gdt.qq.com, sdk.e.qq.com, adsmind.gdtimg.com, pgdt.gtimg.cn, acs.m.taobao.com, jdread-api.jd.com, router-app-api.jdcloud.com, *.gromore.com
+hostname = api-access.pangolin-sdk-toutiao*.com, *.gdt.qq.com, sdk.e.qq.com, adsmind.gdtimg.com, pgdt.gtimg.cn, acs.m.taobao.com, guide-acs.m.taobao.com, jdread-api.jd.com, router-app-api.jdcloud.com, ms.jr.jd.com, api.douban.com, mime.baidu.com, bgg.baidu.com, gateway.kugou.com, *.speedtest.cn, *.mygolbs.com, *.enmonster.com, *.gromore.com
 
 # =========================================================
 # 强烈建议：再订阅下列「持续维护」的社区全量 rewrite 资源，
