@@ -80,12 +80,11 @@
 
 # ---------- 酷安 App 开屏广告 ----------
 # 来源：酷安隐私政策（集成穿山甲、优量汇、快手、GroMore、ADmobile、米盟 SDK）
-# 域名规则已覆盖上述第三方 SDK；这里补酷安自家开屏下发接口与 SDK 竞价接口
-# 酷安首页开屏/信息流广告下发（返回空 JSON 跳过广告位，保留正常内容）
-# 注意：酷安 feed/detail（帖子详情，含评论区）、replyList（评论列表）是正常内容接口，
-#       不可整条 reject，否则评论区无法加载（2026-11-04 已移除误杀规则）
-^https:\/\/api\.coolapk\.com\/v6\/main\/indexV8 url reject-dict
-# 酷安第三方 SDK 竞价接口（穿山甲/优量汇/快手聚合，返回空广告跳过）
+# 域名规则已覆盖上述第三方 SDK；这里补酷安 SDK 竞价接口
+# 注意：api.coolapk.com/v6/main/indexV8 是「首页头条内容 + 开屏广告」混合接口，
+#       整条 reject-dict 会把酷安内部"头条"内容一起清空导致黑屏，不可整条拦（2026-11-04 移除）。
+#       酷安开屏改为只拦下方纯广告的第三方 SDK 竞价接口，自家开屏暂无法干净去除。
+# 酷安第三方 SDK 竞价接口（穿山甲/优量汇/快手聚合，纯广告接口，返回空广告跳过）
 ^https?:\/\/api-access\.pangolin-sdk-toutiao\.com\/api\/ad\/union\/sdk url reject
 ^https?:\/\/mi\.gdt\.qq\.com\/gdt_mview\.fcg url reject
 ^https?:\/\/open\.e\.kuaishou\.com\/rest\/e\/v3\/open\/univ url reject
