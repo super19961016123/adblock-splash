@@ -68,8 +68,30 @@
 ^https?:\/\/remind\.mygolbs\.com\/remind-off\/query\/.+ url reject
 ^https?:\/\/.*\.enmonster\.com\/apa\/(advert\/demand\/home\/poster|index\/advert\/skin) url reject-dict
 
+# ---------- 微博开屏广告 ----------
+# 来源：PakandAlive/Weibo Remove Ads.plugin、zwf234/tailadv.conf、fmz200/wool_scripts
+# 微博开屏走 uve.weibo.com 域，接口需返回空广告（reject-dict）让其跳过
+^https:\/\/(?:bootrealtime|bootpreload)\.uve\.weibo\.com\/v\d\/ad\/(?:realtime|preload) url reject-dict
+^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/(?:sdkad\.php|get-lbs-cell-info\.php|sdkconfig\.php) url reject-dict
+^https:\/\/wbapp\.uve\.weibo\.com\/(?:preload\/get_ad|wbapplua\/wbpullad\.lua) url reject-dict
+^https?:\/\/(?:sdk|wb)app\.uve\.weibo\.com\/(?:interface\/sdk\/sdkad\.php|wbapplua\/wbpullad\.lua) url reject-dict
+# 微博信息流/推送广告接口
+^https?:\/\/api\.weibo\.cn\/2\/(?:ad\/preload|push\/active|client\/addlog_batch) url reject-dict
+
+# ---------- 酷安 App 开屏广告 ----------
+# 来源：酷安隐私政策（集成穿山甲、优量汇、快手、GroMore、ADmobile、米盟 SDK）
+# 域名规则已覆盖上述第三方 SDK；这里补酷安自家开屏下发接口与 SDK 竞价接口
+# 酷安首页开屏/信息流广告下发（返回空 JSON 跳过广告位，保留正常内容）
+^https:\/\/api\.coolapk\.com\/v6\/main\/indexV8 url reject-dict
+# 酷安好物推荐（feed 详情页底部推荐位）
+^https:\/\/api\.coolapk\.com\/v\d\/feed\/detail url reject-dict
+# 酷安第三方 SDK 竞价接口（穿山甲/优量汇/快手聚合，返回空广告跳过）
+^https?:\/\/api-access\.pangolin-sdk-toutiao\.com\/api\/ad\/union\/sdk url reject
+^https?:\/\/mi\.gdt\.qq\.com\/gdt_mview\.fcg url reject
+^https?:\/\/open\.e\.kuaishou\.com\/rest\/e\/v3\/open\/univ url reject
+
 # 下面字段：列出上述 rewrite 覆盖的主机（供 QuantumultX 快速匹配，非必须）
-hostname = api-access.pangolin-sdk-toutiao*.com, *.gdt.qq.com, sdk.e.qq.com, adsmind.gdtimg.com, pgdt.gtimg.cn, acs.m.taobao.com, guide-acs.m.taobao.com, jdread-api.jd.com, router-app-api.jdcloud.com, ms.jr.jd.com, api.douban.com, mime.baidu.com, bgg.baidu.com, gateway.kugou.com, *.speedtest.cn, *.mygolbs.com, *.enmonster.com, *.gromore.com
+hostname = api-access.pangolin-sdk-toutiao*.com, *.gdt.qq.com, sdk.e.qq.com, adsmind.gdtimg.com, pgdt.gtimg.cn, acs.m.taobao.com, guide-acs.m.taobao.com, jdread-api.jd.com, router-app-api.jdcloud.com, ms.jr.jd.com, api.douban.com, mime.baidu.com, bgg.baidu.com, gateway.kugou.com, *.speedtest.cn, *.mygolbs.com, *.enmonster.com, *.gromore.com, *.uve.weibo.com, api.weibo.cn, api.coolapk.com, *.pangolin-sdk-toutiao.com, mi.gdt.qq.com, open.e.kuaishou.com
 
 # =========================================================
 # 强烈建议：再订阅下列「持续维护」的社区全量 rewrite 资源，
