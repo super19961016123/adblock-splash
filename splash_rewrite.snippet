@@ -44,6 +44,12 @@
 # 京东云无线宝 开屏
 ^https?:\/\/router-app-api\.jdcloud\.com\/v\d\/board\/routerAppSplash url reject-200
 
+# ---------- 懂车帝 App 开屏/广告 ----------
+# 来源：xiaomaoJT/QxScript、2Gardon/SM-Ad-FuckU-hosts
+# 懂车帝是字节系，开屏主要走穿山甲 SDK（splash.conf 已用根域名拦 pangolin-sdk-toutiao.com）；
+# 自家广告统一接口为 /motor/ad，按 URL 精准拦；dcarapi.com 是正常内容网关，不可整拦
+^https?:\/\/api5-normal-lq\.dcarapi\.com\/motor\/ad url reject-dict
+
 # ---------- 通用聚合（穿山甲 GroMore 等聚合中间层） ----------
 # 来源：chxm1023/Advertising
 ^https?:\/\/[-\w]*\.gromore\.com\/.* url reject-200
