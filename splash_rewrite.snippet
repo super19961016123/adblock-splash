@@ -25,6 +25,16 @@
 # ---------- 阿里系 App 开屏 ----------
 # 来源：chxm1023/Advertising（acs.m.taobao.com 为淘宝/天猫等开屏广告主接口）
 ^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.taobao\.wmlayer\.adi\.load url reject-200
+# 淘宝广告获取 / 阿里妈妈广告配置（纯广告接口，返回空 JSON 让客户端跳过）
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alibaba\.advertisementservice\.getadv url reject-dict
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.alimama\.etao\.config\.query url reject-dict
+
+# ---------- 闲鱼 App 开屏广告 ----------
+# 来源：atopsecret/SurgeScripts xianyu-ad-block.sgmodule（2026-11 更新）
+# 闲鱼开屏走 mtop.taobao.idlecommerce.splash.async.ads（goofish/taobao 网关下发的纯广告接口）
+# 注意：acs.m.goofish.com 是闲鱼所有请求的 API 网关，只能按 URL 精准拦，不可 host-suffix 整拦
+^https?:\/\/acs\.m\.(goofish|taobao)\.com\/gw\/mtop\.taobao\.idlecommerce\.splash\.async\.ads url reject-dict
+^https?:\/\/acs\.m\.(goofish|taobao)\.com\/gw\/mtop\.taobao\.idle\.home\.welcome url reject-dict
 
 # ---------- 京东系 App 开屏 ----------
 # 来源：fmz200/wool_scripts
@@ -90,7 +100,7 @@
 ^https?:\/\/open\.e\.kuaishou\.com\/rest\/e\/v3\/open\/univ url reject
 
 # 下面字段：列出上述 rewrite 覆盖的主机（供 QuantumultX 快速匹配，非必须）
-hostname = api-access.pangolin-sdk-toutiao*.com, *.gdt.qq.com, sdk.e.qq.com, adsmind.gdtimg.com, pgdt.gtimg.cn, acs.m.taobao.com, guide-acs.m.taobao.com, jdread-api.jd.com, router-app-api.jdcloud.com, ms.jr.jd.com, api.douban.com, mime.baidu.com, bgg.baidu.com, gateway.kugou.com, *.speedtest.cn, *.mygolbs.com, *.enmonster.com, *.gromore.com, *.uve.weibo.com, api.weibo.cn, api.coolapk.com, *.pangolin-sdk-toutiao.com, mi.gdt.qq.com, open.e.kuaishou.com
+hostname = api-access.pangolin-sdk-toutiao*.com, *.gdt.qq.com, sdk.e.qq.com, adsmind.gdtimg.com, pgdt.gtimg.cn, acs.m.taobao.com, acs.m.goofish.com, guide-acs.m.taobao.com, jdread-api.jd.com, router-app-api.jdcloud.com, ms.jr.jd.com, api.douban.com, mime.baidu.com, bgg.baidu.com, gateway.kugou.com, *.speedtest.cn, *.mygolbs.com, *.enmonster.com, *.gromore.com, *.uve.weibo.com, api.weibo.cn, api.coolapk.com, *.pangolin-sdk-toutiao.com, mi.gdt.qq.com, open.e.kuaishou.com
 
 # =========================================================
 # 强烈建议：再订阅下列「持续维护」的社区全量 rewrite 资源，
