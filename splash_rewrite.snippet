@@ -44,12 +44,6 @@
 # 京东云无线宝 开屏
 ^https?:\/\/router-app-api\.jdcloud\.com\/v\d\/board\/routerAppSplash url reject-200
 
-# ---------- 懂车帝 App 开屏/广告 ----------
-# 来源：xiaomaoJT/QxScript、2Gardon/SM-Ad-FuckU-hosts
-# 懂车帝是字节系，开屏主要走穿山甲 SDK（splash.conf 已用根域名拦 pangolin-sdk-toutiao.com）；
-# 自家广告统一接口为 /motor/ad，按 URL 精准拦；dcarapi.com 是正常内容网关，不可整拦
-^https?:\/\/api5-normal-[a-z0-9]+\.dcarapi\.com\/motor\/ad url reject-dict
-
 # ---------- 通用聚合（穿山甲 GroMore 等聚合中间层） ----------
 # 来源：chxm1023/Advertising
 ^https?:\/\/[-\w]*\.gromore\.com\/.* url reject-200
@@ -106,7 +100,7 @@
 ^https?:\/\/open\.e\.kuaishou\.com\/rest\/e\/v3\/open\/univ url reject
 
 # 下面字段：列出上述 rewrite 覆盖的主机（供 QuantumultX 快速匹配，非必须）
-hostname = api-access.pangolin-sdk-toutiao*.com, *.gdt.qq.com, sdk.e.qq.com, adsmind.gdtimg.com, pgdt.gtimg.cn, acs.m.taobao.com, acs.m.goofish.com, guide-acs.m.taobao.com, jdread-api.jd.com, router-app-api.jdcloud.com, ms.jr.jd.com, api.douban.com, mime.baidu.com, bgg.baidu.com, gateway.kugou.com, *.speedtest.cn, *.mygolbs.com, *.enmonster.com, *.gromore.com, *.uve.weibo.com, api.weibo.cn, api.coolapk.com, *.pangolin-sdk-toutiao.com, mi.gdt.qq.com, open.e.kuaishou.com, api5-normal-*.dcarapi.com
+hostname = api-access.pangolin-sdk-toutiao*.com, *.gdt.qq.com, sdk.e.qq.com, adsmind.gdtimg.com, pgdt.gtimg.cn, acs.m.taobao.com, acs.m.goofish.com, guide-acs.m.taobao.com, jdread-api.jd.com, router-app-api.jdcloud.com, ms.jr.jd.com, api.douban.com, mime.baidu.com, bgg.baidu.com, gateway.kugou.com, *.speedtest.cn, *.mygolbs.com, *.enmonster.com, *.gromore.com, *.uve.weibo.com, api.weibo.cn, api.coolapk.com, *.pangolin-sdk-toutiao.com, mi.gdt.qq.com, open.e.kuaishou.com
 
 # =========================================================
 # 强烈建议：再订阅下列「持续维护」的社区全量 rewrite 资源，
